@@ -6,6 +6,7 @@ HELP = f"""Help for StatBot:
 `{PREFIX}set <mc/gmod/hl2dm>` - Set this channel for displaying a certain status
 `{PREFIX}start` - Start displaying statuses
 `{PREFIX}stop` - Stop displaying statuses
+`{PREFIX}info` - Show channels with a statues tied to them
 
 Status emojis, and what they mean:
 
