@@ -16,5 +16,7 @@ Status emojis, and what they mean:
 """
 
 ERRORS = {
-    "syntax": f"Syntax error! Refer to `{PREFIX}help`"
+    "syntax": f"Syntax error! Refer to `{PREFIX}help`",
+    "args": f"Not enough arguments! Refer to `{PREFIX}help`",
+    "notfound": f"Command not found! Refer to `{PREFIX}help`"
 }
