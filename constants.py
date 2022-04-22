@@ -14,3 +14,7 @@ Status emojis, and what they mean:
 🗿 - Could not fetch server data
 🤔 - Fetching server data
 """
+
+ERRORS = {
+    "syntax": f"Syntax error! Refer to `{PREFIX}help`"
+}
