@@ -160,6 +160,34 @@ async def info(ctx):
 
     await ctx.send(message if message else "There are currently no tied channels.")
 
+@bot.command()
+async def serverinfo(ctx):
+    with ctx.typing():
+        mc_data = requests.get(APIS["mc"]).json()
+        gmod_data = requests.get(APIS["gmod"]).json()
+        hl2dm_data = requests.get(APIS["hl2dm"]).json()
+
+        server_embed = nextcord.Embed(title="Servers")
+
+        server_embed.add_field(name="-" * len(mc_data["server"]), value=mc_data["server"], inline=False)
+        server_embed.add_field(name="Online", value=mc_data["online"], inline=True)
+        server_embed.add_field(name="Operator", value=mc_data["operator"], inline=True)
+
+        if mc_data["online"]:
+            server_embed.add_field(name="Players", value=f"{mc_data['players']['players_online']}/{mc_data['players']['players_max']}", inline=True)
+            server_embed.add_field(name="Network protocol", value=str(mc_data["server_info"]["protocol"]), inline=True)
+            server_embed.add_field(name="Version", value=mc_data["server_info"]["server_version"], inline=True)
+
+        server_embed.add_field(name="-" * len(gmod_data["server"]), value=gmod_data["server"], inline=False)
+        server_embed.add_field(name="Online", value=gmod_data["online"], inline=True)
+        server_embed.add_field(name="Operator", value=gmod_data["operator"], inline=True)
+
+        server_embed.add_field(name="-" * len(hl2dm_data["server"]), value=hl2dm_data["server"], inline=False)
+        server_embed.add_field(name="Online", value=hl2dm_data["online"], inline=True)
+        server_embed.add_field(name="Operator", value=hl2dm_data["operator"], inline=True)
+
+    await ctx.send(embed=server_embed)
+
 #################
 
 @bot.event
