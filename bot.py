@@ -75,6 +75,7 @@ async def help(ctx):
     await ctx.send(HELP)
 
 @bot.command()
+@commands.check_any(commands.has_role(966442031075459072), commands.is_owner())
 async def set(ctx, which):
     """Set this channel for displaying a certain status"""
     error = False
@@ -104,6 +105,7 @@ async def set(ctx, which):
     await ctx.send("Success!")
 
 @bot.command()
+@commands.check_any(commands.has_role(966442031075459072), commands.is_owner())
 async def unset(ctx):
     # look at this mess
     global mc_channel
@@ -130,6 +132,7 @@ async def unset(ctx):
     await ctx.send("Success!\nDue to weird Discord rate limits, you need to edit the channel name yourself to remove the emoji.")
 
 @bot.command()
+@commands.check_any(commands.has_role(966442031075459072), commands.is_owner())
 async def start(ctx):
     global start
     global start_first_time
@@ -142,6 +145,7 @@ async def start(ctx):
     await ctx.send("Success!")
 
 @bot.command()
+@commands.check_any(commands.has_role(966442031075459072), commands.is_owner())
 async def stop(ctx):
     global start
     start = False
