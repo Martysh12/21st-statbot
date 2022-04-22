@@ -8,14 +8,12 @@ HELP = f"""Help for StatBot:
 `{PREFIX}start` - Start displaying all statuses
 `{PREFIX}stop` - Stop displaying all statuses
 `{PREFIX}info` - Show all channels with a status tied to them
-`{PREFIX}serverinfo <mc/gmod/hl2dm>` - Show server info
+`{PREFIX}serverinfo` - Show info about all servers
 
 Status emojis, and what they mean:
 
-🤢 - Server is online
-🥵 - Server is offline
-🗿 - Could not fetch server data
-🤔 - Fetching server data
+🟢 - Server is online
+🔴 - Server is offline
 """
 
 ERRORS = {
