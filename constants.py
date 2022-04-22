@@ -30,8 +30,7 @@ APIS = {
 }
 
 STATUS_SYMBOLS = {
-    "online": "🤢",
-    "offline": "🥵",
-    "error": "🗿",
-    "fetching": "🤔"
+    "online": "🟢",
+    "offline": "🔴",
+    "error": "⚫"
 }
