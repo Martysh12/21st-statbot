@@ -20,6 +20,7 @@ print("StatBot v1.0 by Martysh12#1610")
 print("Created specifically for the Half-Life 2 - 21st Century Edition server.")
 
 bot = commands.Bot(command_prefix=PREFIX, activity=nextcord.Game(PREFIX + "help"))
+bot.remove_command('help')
 
 @bot.event
 async def on_ready():
