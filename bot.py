@@ -36,7 +36,6 @@ async def help(ctx):
 @bot.command()
 async def set(ctx, which):
     """Set this channel for displaying a certain status"""
-    
     error = False
 
     if which == "mc":
