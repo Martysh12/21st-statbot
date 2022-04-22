@@ -7,7 +7,7 @@ HELP = f"""Help for StatBot:
 `{PREFIX}unset` - Untie status from channel
 `{PREFIX}start` - Start displaying all statuses
 `{PREFIX}stop` - Stop displaying all statuses
-`{PREFIX}info` - Show channels with a status tied to them
+`{PREFIX}info` - Show all channels with a status tied to them
 `{PREFIX}serverinfo <mc/gmod/hl2dm>` - Show server info
 
 Status emojis, and what they mean:
