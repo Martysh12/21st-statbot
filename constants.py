@@ -5,6 +5,7 @@ HELP = f"""Help for StatBot:
 `{PREFIX}help` - Show this message
 `{PREFIX}serverinfo` - Show info about all servers
 `{PREFIX}info` - Show all channels with a server tied to them
+`{PREFIX}credits` - Credits
 
 Admin only commands:
 `{PREFIX}set <mc/gmod/hl2dm>` - Tie server to channel
