@@ -13,6 +13,10 @@ print("Created specifically for the Half-Life 2 - 21st Century Edition server.")
 
 bot = commands.Bot(command_prefix=PREFIX, activity=nextcord.Game(PREFIX + "help"))
 
+@bot.event
+async def on_ready():
+    print(f'Ready! Logged in as {bot.user} (ID: {bot.user.id})')
+
 @bot.command()
 async def ping(ctx):
     await ctx.reply('Pong!')
