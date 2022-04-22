@@ -20,6 +20,10 @@ mc_channel = None
 gmod_channel = None
 hl2dm_channel = None
 
+mc_channel_original_name = ""
+gmod_channel_original_name = ""
+hl2dm_channel_original_name = ""
+
 @bot.event
 async def on_ready():
     print(f'Ready! Logged in as {bot.user} (ID: {bot.user.id})')
@@ -37,12 +41,20 @@ async def set(ctx, which):
 
     if which == "mc":
         global mc_channel
+        global mc_channel_original_name
+
         mc_channel = ctx.channel
+        mc_channel_original_name = ctx.channel.name
     elif which == "gmod":
         global gmod_channel
+        global gmod_channel_original_name
+
         gmod_channel = ctx.channel
+        gmod_channel_original_name = ctx.channel.name
     elif which == "hl2dm":
         global hl2dm_channel
+        global hl2dm_channel_original_name
+
         hl2dm_channel = ctx.channel
     else:
         await ctx.send(ERRORS["syntax"])
