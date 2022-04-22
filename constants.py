@@ -3,12 +3,14 @@ PREFIX = "statbot$"
 HELP = f"""Help for StatBot:
 
 `{PREFIX}help` - Show this message
-`{PREFIX}set <mc/gmod/hl2dm>` - Tie status to channel
-`{PREFIX}unset` - Untie status from channel
+`{PREFIX}serverinfo` - Show info about all servers
+`{PREFIX}info` - Show all channels with a server tied to them
+
+Admin only commands:
+`{PREFIX}set <mc/gmod/hl2dm>` - Tie server to channel
+`{PREFIX}unset` - Untie server from channel
 `{PREFIX}start` - Start displaying all statuses
 `{PREFIX}stop` - Stop displaying all statuses
-`{PREFIX}info` - Show all channels with a status tied to them
-`{PREFIX}serverinfo` - Show info about all servers
 
 Status emojis, and what they mean:
 
