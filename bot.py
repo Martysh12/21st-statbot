@@ -1,9 +1,10 @@
 import nextcord
-from nextcord.ext import commands
+from nextcord.ext import tasks, commands
 
 from dotenv import load_dotenv
 
-import threading
+import requests
+
 import os
 
 from constants import *
@@ -23,6 +24,14 @@ hl2dm_channel = None
 mc_channel_original_name = ""
 gmod_channel_original_name = ""
 hl2dm_channel_original_name = ""
+
+def set_interval(func, sec):
+    def func_wrapper():
+        set_interval(func, sec)
+        func()
+    t = threading.Timer(sec, func_wrapper)
+    t.start()
+    return t
 
 @bot.event
 async def on_ready():
@@ -71,5 +80,40 @@ async def on_command_error(ctx, error):
 # @bot.command()
 # async def ping(ctx):
 #     await ctx.reply('Pong!')
+
+@tasks.loop(minutes=10) # DAMN YOU WEIRD DISCORD CHANNEL RENAME RATE LIMIT! https://github.com/discord/discord-api-docs/issues/1900
+async def check_servers():
+    global mc_channel
+    global gmod_channel
+    global hl2dm_channel
+
+    if mc_channel:
+        await mc_channel.edit(name=STATUS_SYMBOLS["fetching"] + mc_channel_original_name)
+        mc_data = requests.get(APIS["mc"]).json()
+
+        if mc_data["online"]:
+            await mc_channel.edit(name=STATUS_SYMBOLS["online"] + mc_channel_original_name)
+        else:
+            await mc_channel.edit(name=STATUS_SYMBOLS["offline"] + mc_channel_original_name)
+
+    if gmod_channel:
+        await gmod_channel.edit(name=STATUS_SYMBOLS["fetching"] + gmod_channel_original_name)
+        gmod_data = requests.get(APIS["gmod"]).json()
+
+        if gmod_data["online"]:
+            await gmod_channel.edit(name=STATUS_SYMBOLS["online"] + gmod_channel_original_name)
+        else:
+            await gmod_channel.edit(name=STATUS_SYMBOLS["offline"] + gmod_channel_original_name)
+
+    if hl2dm_channel:
+        await hl2dm_channel.edit(name=STATUS_SYMBOLS["fetching"] + hl2dm_channel_original_name)
+        hl2dm_data = requests.get(APIS["hl2dm"]).json()
+
+        if hl2dm_data["online"]:
+            await hl2dm_channel.edit(name=STATUS_SYMBOLS["online"] + hl2dm_channel_original_name)
+        else:
+            await hl2dm_channel.edit(name=STATUS_SYMBOLS["offline"] + hl2dm_channel_original_name)
+
+check_servers.start()
 
 bot.run(os.getenv("TOKEN"))
