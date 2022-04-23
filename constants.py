@@ -12,6 +12,7 @@ Admin only commands:
 `{PREFIX}unset` - Untie server from channel
 `{PREFIX}start` - Start displaying all statuses
 `{PREFIX}stop` - Stop displaying all statuses
+`{PREFIX}removeemojis` - Remove emojis from channel name
 
 Status emojis, and what they mean:
 
