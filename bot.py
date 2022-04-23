@@ -222,6 +222,7 @@ async def credits(ctx):
     await ctx.send("Programmed by: Martysh12#1610 and NotDominic#4952\nIf you encounter any errors, feel free to DM us :)")
 
 @bot.command()
+@commands.check_any(commands.has_role(966442031075459072), commands.is_owner())
 async def removeemojis(ctx):
     await ctx.channel.edit(name=remove_emojis(ctx.channel.name))
     await ctx.send("Success!")
